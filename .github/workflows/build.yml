@@ -1,0 +1,23 @@
+name: Download speed test CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Compress Cats output
+      run: 7z a "CompressedOutput\Files.7z" .\Output\* -mx1
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: Files
+        path: CompressedOutput\Files.7z
