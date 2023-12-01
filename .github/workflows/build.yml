@@ -13,8 +13,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Compress Cats output
-      run: 7z a "CompressedOutput\Files.7z" .\Output\* -mx1
+    - name: Compress output
+      run: 7z a "CompressedOutput\Files.7z" .\Output\* -mx0
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
